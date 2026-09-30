@@ -3,3 +3,4 @@ function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||localStorage.g
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function id(){return crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`}
 function days(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/86400000)}
+function date(v){return v?new Date(`${v}T12:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'No deadline'}
