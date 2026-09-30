@@ -4,3 +4,4 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function id(){return crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`}
 function days(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/86400000)}
 function date(v){return v?new Date(`${v}T12:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'No deadline'}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
