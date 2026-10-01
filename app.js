@@ -6,3 +6,4 @@ function days(v){return Math.ceil((new Date(`${v}T23:59:59`)-new Date())/8640000
 function date(v){return v?new Date(`${v}T12:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'No deadline'}
 function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
 function render(){
+ const sel=$('#school-select'),old=sel.value;sel.innerHTML='<option value="">General task</option>'+data.schools.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');if(data.schools.some(s=>s.id===old))sel.value=old;
