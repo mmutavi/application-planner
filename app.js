@@ -9,3 +9,4 @@ function render(){
  const sel=$('#school-select'),old=sel.value;sel.innerHTML='<option value="">General task</option>'+data.schools.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');if(data.schools.some(s=>s.id===old))sel.value=old;
  const done=data.tasks.filter(t=>t.done).length,total=data.tasks.length,pct=total?Math.round(done/total*100):0;
  const upcoming=data.schools.filter(s=>s.deadline&&s.status!=='Submitted'&&s.status!=='Decision received').sort((a,b)=>a.deadline.localeCompare(b.deadline))[0];
+ const needs=[...data.schools.filter(s=>s.deadline&&days(s.deadline)<=7&&s.status!=='Submitted'),...data.tasks.filter(t=>!t.done&&t.due&&days(t.due)<=7)];
