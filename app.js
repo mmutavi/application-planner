@@ -16,3 +16,4 @@ function render(){
  const general=data.tasks.filter(t=>!t.school);if(general.length)html+=`<article class="item"><div class="item-main"><h3>General tasks</h3>${general.map(t=>`<label class="check"><input type="checkbox" data-task="${esc(t.id)}" ${t.done?'checked':''}><span style="flex:1">${esc(t.title)}${t.due?` <span class="muted">· ${date(t.due)}</span>`:''}</span><button type="button" class="btn icon danger" data-task-remove="${esc(t.id)}" aria-label="Remove task">×</button></label>`).join('')}</div></article>`;
  $('#schools').innerHTML=html;
 }
+$('#school-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.schools.push({id:id(),name:f.get('name').trim(),deadline:f.get('deadline'),status:f.get('status')});e.currentTarget.reset();save()});
