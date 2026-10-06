@@ -17,3 +17,4 @@ function render(){
  $('#schools').innerHTML=html;
 }
 $('#school-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.schools.push({id:id(),name:f.get('name').trim(),deadline:f.get('deadline'),status:f.get('status')});e.currentTarget.reset();save()});
+$('#task-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.tasks.push({id:id(),title:f.get('title').trim(),due:f.get('due'),school:f.get('school'),done:false});e.currentTarget.reset();save()});
