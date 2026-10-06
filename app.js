@@ -18,3 +18,4 @@ function render(){
 }
 $('#school-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.schools.push({id:id(),name:f.get('name').trim(),deadline:f.get('deadline'),status:f.get('status')});e.currentTarget.reset();save()});
 $('#task-form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);data.tasks.push({id:id(),title:f.get('title').trim(),due:f.get('due'),school:f.get('school'),done:false});e.currentTarget.reset();save()});
+$('#schools').addEventListener('change',e=>{if(e.target.matches('[data-task]')){const t=data.tasks.find(x=>x.id===e.target.dataset.task);if(t)t.done=e.target.checked;save()}if(e.target.matches('[data-school-status]')){const s=data.schools.find(x=>x.id===e.target.dataset.schoolStatus);if(s)s.status=e.target.value;save()}});
